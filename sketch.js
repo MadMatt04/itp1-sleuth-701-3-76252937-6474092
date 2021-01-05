@@ -121,7 +121,67 @@ function setup()
 }
 
 // Declare both your functions here
+function testProperties(suspectObj)
+{
+	var matches = 0;
 
+	if (suspectObj.accessory == "big black envelope") {
+		matches += 1;
+	}
+
+
+	if (suspectObj.eyes == "grey") {
+		matches += 1;
+	}
+
+	if (suspectObj.hair == "long white") {
+		matches += 1;
+	}
+
+	if (suspectObj.height >= 150 && suspectObj.height <= 197) {
+		matches += 1;
+	}
+
+	if (suspectObj.weight >= 68 && suspectObj.weight <= 87) {
+		matches += 1;
+	}
+
+	// if (suspectObj.glasses == "light tan") {
+	// 	matches += 1;
+	// }
+
+	if (suspectObj.age >= 30 && suspectObj.age <= 52) {
+		matches += 1;
+	}
+
+	if (suspectObj.tattoo == "sword") {
+		matches += 1;
+	}
+
+	if (suspectObj.item == "fur vest") {
+		matches += 1;
+	}
+
+	return matches;
+}
+
+function traverseSuspects()
+{
+	var guiltySuspect = {};
+	var maxMatches = 0;
+
+	for (var i = 0; i < usualSuspects.length; i++)
+	{
+		var suspect = usualSuspects[i];
+		var matches = testProperties(suspect);
+		if (matches > maxMatches) {
+			guiltySuspect = suspect;
+			maxMatches = matches;
+		}
+	}
+
+	return guiltySuspect;
+}
 
 
 function draw()
